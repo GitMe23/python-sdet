@@ -3,10 +3,10 @@ import json
 
 response = requests.get('http://216.10.245.166/Library/GetBook.php',
              params={'AuthorName':'Rahul Shetty'},)
-# print(response.text)
-# print(type(response.text))
-# dict_response = json.loads(response.text)
-# print(dict_response[0]['isbn'])
+print(response.text)
+print(type(response.text))
+dict_response = json.loads(response.text)
+print(dict_response[0]['isbn'])
 json_response = response.json()
 print(type(json_response))
 print(json_response[0]['isbn'])
@@ -19,13 +19,6 @@ for actualBook in json_response:
         print(actualBook)
         break
 
-expectedBook = {
-        "book_name": "Learn API Automation with RestAssured",
-        "isbn": "RGHCC",
-        "aisle": "12239"
-    }
-
-assert actualBook == expectedBook
 
 
 

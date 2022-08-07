@@ -1,36 +1,28 @@
-import json
-import configparser
-from payLoad import *
-from utilities.resources import *
-from utilities.configurations import *
-
 import requests
 
-url = getConfig()['API']['endpoint'] + ApiResources.addBook
-headers = {"Content-Type": "application/json"}
-addBook_response = requests.post(url,json=addBookPayload("fefrewe"),headers=headers, )
+#  hitting request with payload and adding headers
+addBook_response = requests.post('http://216.10.245.166/Library/Addbook.php',
+                                 json={
+                                     "name": "Moby Dick",
+                                     "isbn": "z123s",
+                                     "aisle": "2289",
+                                     "author": "Herman Melville"
+                                 }, headers={"Content-Type": "application/json"},
+                                 )
+
 print(addBook_response.json())
-response_json = addBook_response.json()
-print(type(response_json))
 
-bookId = response_json['ID']
+json_response = addBook_response.json()
+
+bookId = json_response['ID']
 print(bookId)
-# Delete Book -
-response_deleteBook = requests.post('http://216.10.245.166/Library/DeleteBook.php', json={
 
-    "ID": bookId
-}, headers={"Content-Type": "application/json"},
-                                    )
+delete_response = requests.post('http://216.10.245.166/Library/DeleteBook.php',
+                                json={
+                                    "ID": bookId
+                                }, headers={"Content-Type": "application/json"},
+                                )
 
-assert response_deleteBook.status_code == 200
-res_json = response_deleteBook.json()
-
-print(res_json["msg"])
-assert res_json["msg"] == "book is successfully deleted"
-
-#Authentication
-url = "https://api.github.com/user"
-github_response = requests.get(url,verify=False,auth=('rahulshettcademy',getPassword()))
-
-print(github_response.status_code)
-
+assert delete_response.status_code == 200
+delete_json_response = delete_response.json()
+print(delete_json_response['msg'])
