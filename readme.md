@@ -2,6 +2,8 @@
 
 ##### Python SDET scratch code
 
+Repo to store scratch Python SDET tutorial files
+
 * Back end API automation testing
 * Parsing JSON using Python
 * Python requests library
