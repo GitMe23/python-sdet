@@ -1,7 +1,10 @@
 import requests
 import json
+from utilities.configurations import *
 
-response = requests.get('http://216.10.245.166/Library/GetBook.php',
+config = getConfig()
+
+response = requests.get(config['API']['endpoint']+'/Library/GetBook.php',
              params={'AuthorName':'Rahul Shetty'},)
 print(response.text)
 print(type(response.text))
