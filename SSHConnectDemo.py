@@ -25,4 +25,6 @@ upload_file('batchFiles/run_scripts.sh', 'run_scripts.sh')
 
 ssh.exec_command('./run_scripts.sh')
 
+sftp.get('example.csv', 'from-ec2.csv')
+
 ssh.close()
