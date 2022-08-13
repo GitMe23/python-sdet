@@ -37,5 +37,5 @@ print(delete_json_response['msg'])
 
 # Authentication
 url = "http://api.github.com/user"
-github_response = requests.get(url, verify=False, auth=('GitMe23', pass_manager.getPassword()))
+github_response = requests.get(url, verify=False, auth=())
 print(github_response.status_code)
