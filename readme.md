@@ -2,7 +2,7 @@
 
 ##### Python SDET scratch code
 
-Repo to store scratch Python SDET tutorial files
+This is a repo to store some of my examples of Python test framework libraries.
 
 * Back end API automation testing
 * Parsing JSON using Python
