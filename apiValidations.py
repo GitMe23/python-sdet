@@ -5,7 +5,7 @@ from utilities.configurations import *
 config = getConfig()
 
 response = requests.get(config['API']['endpoint']+'/Library/GetBook.php',
-             params={'AuthorName':'Rahul Shetty'},)
+             params={'AuthorName':'Andy Hopwood'},)
 print(response.text)
 print(type(response.text))
 dict_response = json.loads(response.text)
